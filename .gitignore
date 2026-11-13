@@ -1,0 +1,9 @@
+# Visual Studio / C# ignore
+[Bb]in/
+[Oo]bj/
+.vs/
+packages/
+*.user
+*.suo
+TestResults/
+*.sln.docstates

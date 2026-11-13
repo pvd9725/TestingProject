@@ -1,0 +1,223 @@
+{
+  "info": {
+    "_postman_id": "4c5940d3-fd74-40b8-805b-fc2992e8efde",
+    "name": "KiemThuPhanMem_17_Dieu",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "32256383",
+    "_collection_link": "https://go.postman.co/collection/32256383-4c5940d3-fd74-40b8-805b-fc2992e8efde?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Get Users",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//TC02_17_Dieu_CheckName passed\r",
+              "pm.test(\"TC02_17_Dieu_CheckName\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData[0].name).to.eql(\"Jackson\");\r",
+              "});\r",
+              "//TC02_17_Dieu_CheckName failed\r",
+              "pm.test(\"TC02_17_Dieu_CheckName\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData[0].name).to.eql(\"Jane\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}/users",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Post User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//TC02_17_Dieu_CheckEmail passed\r",
+              "pm.test(\"TC02_17_Dieu_CheckEmail\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.email).to.eql(\"david@gmail.com\");\r",
+              "});\r",
+              "//TC02_17_Dieu_CheckEmail passed\r",
+              "pm.test(\"TC02_17_Dieu_CheckEmail\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.email).to.eql(\"david999@gmail.com\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"David\",\r\n    \"email\": \"david@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/users",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Put User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//TC02_17_Dieu_CheckName\r",
+              "pm.test(\"TC02_17_Dieu_CheckName\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.name).to.eql(\"Jackson\");\r",
+              "});\r",
+              "//TC02_17_Dieu_CheckName\r",
+              "pm.test(\"TC02_17_Dieu_CheckName\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.name).to.eql(\"John\");\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Jackson\",\r\n    \"email\": \"jackson.doe@example.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/users/1",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Patch User",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "//TC02_17_Dieu_CheckEmail passed\r",
+              "pm.test(\"TC02_17_Dieu_CheckEmail\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.email).to.eql(\"abc@gmail.com\");\r",
+              "});\r",
+              "//TC02_17_Dieu_CheckEmail failed\r",
+              "pm.test(\"TC02_17_Dieu_CheckEmail\", function () {\r",
+              "    var jsonData = pm.response.json();\r",
+              "    pm.expect(jsonData.email).to.eql(\"jackson.doe@gmail.com\");\r",
+              "});\r",
+              ""
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"abc@gmail.com\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}/users/1",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "users",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete User",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"abc@gmail.com\"\r\n}"
+        },
+        "url": {
+          "raw": "{{baseURL}}/users/2",
+          "host": [
+            "{{baseURL}}"
+          ],
+          "path": [
+            "users",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
